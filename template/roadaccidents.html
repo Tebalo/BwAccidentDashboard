@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>dashboard</title>
+</head>
+<body>
+	<div class="fixed-header">
+		<div class="inner_header">
+			<a href="/">
+				<span style="font-size: 40px">
+					BOTSWANA ACCIDENT DASHBOARD
+				</span>
+			</a>
+		</div>
+	</div>
+	<div>
+		<div class="col-lg-3" style="float: left; max-height: 650px; max-width: 400px; overflow: scroll; overflow-x: hidden; ">
+			<h1>Total Accidents: {{totalCount}}</h1>
+			<canvas id="myChart" style="width: 300px; height: 6500px;"></canvas>
+			<h1>Bottom of the first div</h1>
+		</div>
+		<div class="col-lg-6">
+			<canvas id="myChart" style="width: 300px; height: 6500px;"></canvas>
+		</div>
+		<div class="col-lg-3">
+			<canvas id="myChart" style="width: 300px; height: 6500px;"></canvas>
+		</div>
+	</div>
+	<a href="/profile">Your Profile</a>
+</body>
+<style type="text/css">
+	body{        
+	    padding-top: 60px;
+	    padding-bottom: 40px;
+	}
+	.fixed-header, .fixed-footer{
+	    width: 100%;
+	    position: 80px;        
+	    background-color: #101010;
+	    display: block;
+	    padding: 10px 0;
+	    color: #F1F5F4;
+	}
+	.inner_header{
+		width: 1000px;
+		height: 100%;
+		display: block;
+		background-color: #101010;
+		margin: 0 auto;
+		background-color: red;
+	}
+	.fixed-header{
+	    top: 0;
+	}
+	.fixed-footer{
+	    bottom: 0;
+	}
+	.container{
+	    width: 80%;
+	    margin: 0 auto; /* Center the DIV horizontally */
+	}
+	nav a{
+	    color: #76FF33;
+	    text-decoration: none;
+	    padding: 7px 25px;
+	    display: inline-block;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-decoration: none;
+	}
+</style>
+<script>
+	var ctx = document.getElementById('myChart');
+	var myChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: {{varA|safe}},
+	        datasets: [{
+	            label: '# of Votes',
+	            data: [12, 19, 3, 5, 2, 3],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(153, 102, 255, 0.2)',
+	                'rgba(255, 159, 64, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	    	indexAxis: 'y'
+	        scales: {
+	            y: {
+	               beginAtZero: true
+	            }
+	        }
+	    });		
+</script>
+</html>
